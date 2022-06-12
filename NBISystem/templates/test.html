@@ -1,0 +1,42 @@
+ 1 <!doctype html>
+ 2 <html>
+ 3     <head>
+ 4     <meta charset="UTF-8">
+ 5     <title>HTML--JS 二级联动</title>
+ 6     <script language="javascript">
+ 7         var cities=[
+ 8             ["山东省","青岛市","济南市","威海市"],
+ 9             ["安徽省","合肥市","阜阳市","亳州市"],
+10             ["河南省","郑州市","新乡市","洛阳市"]
+11         ];
+12         function show(val){
+13             for(i=0;i<cities.length;i++){ //循环遍历，一维数组长度
+14                 if(cities[i][0]==val){  //一维数组下标为0的元素即省 与下拉菜单值比较
+15                     document.getElementById("city").length=1;  // city 长度设为1
+16                     for(j=1;j<cities[i].length;j++){ //循环遍历，二维数组长度
+17                         document.getElementById("city").add(
+18                         new Option(cities[i][j]));  //给city赋新cities选出的值
+19
+20                     }
+21                 }
+22
+23             }
+24         }
+25     </script>
+26     </head>
+27     <body>
+28         <form action="" method="post" name="myform">
+29         地区:
+30         <select name="area" onchange="show(this.value)" >
+31             <option value="0">=请选择=</option>
+32             <option value="山东省">山东省</option>
+33             <option value="安徽省">安徽省</option>
+34             <option value="河南省">河南省</option>
+35         </select>
+36
+37         <select id="city">
+38             <option value="0">=请选择=</option>  <!--此处一个长度-->
+39         </select>
+40         </form>
+41     </body>
+42 </html>

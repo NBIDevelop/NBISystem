@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% csrf_token %}
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+{#    <script src="https://cdn.bootcss.com/echarts/3.0.0/echarts.min.js"></script>#}
+</head>
+<body>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;">这</div>
+  <script>
+       $.ajax({
+            type:"get",
+            url:"http://152.136.59.62:8001/ceshi/test",
+            dataType:"json",
+            success:function(data,status){
+                console.log(data,status)
+            }}
+        )
+  </script>
+{#    <script type="text/javascript">#}
+{#        // 基于准备好的dom，初始化echarts实例#}
+{#        var myChart = echarts.init(document.getElementById('main'));#}
+{##}
+{#        // 指定图表的配置项和数据#}
+{#        var option = {#}
+{#            title: {#}
+{#                text: 'ECharts 入门示例'#}
+{#            },#}
+{#            tooltip: {},#}
+{#            legend: {#}
+{#                data:['销量']#}
+{#            },#}
+{#            xAxis: {#}
+{#                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]#}
+{#            },#}
+{#            yAxis: {},#}
+{#            series: [{#}
+{#                name: '销量',#}
+{#                type: 'bar',#}
+{#                data: [5, 20, 36, 10, 10, 20]#}
+{#            }]#}
+{#        };#}
+{#        // 使用刚指定的配置项和数据显示图表。#}
+{#        myChart.setOption(option);#}
+{#    </script>#}
+
+
+
+
+</body>
+</html>

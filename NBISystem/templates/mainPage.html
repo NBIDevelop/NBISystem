@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+
+    <title>[NBI - Online]</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/mainPage.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+    <script language="JavaScript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script language="JavaScript" src="{% static 'js/mainPageFunction.js' %}"></script>
+    <script language="JavaScript" src="{% static 'js/alert.js' %}"></script>
+</head>
+<body onload="mainPageInitProcess()">
+    {#header#}
+    <div id="mainPageHeader">
+        <div id="iconContainer">
+            <img src="{%static 'img/webicon.jpg' %}" style="height: 80%; align-self: center; border-radius: 8%">
+        </div>
+        <div id="nameContainer">
+            <div style="width: 100%; text-align: left; height: 45%; display: inline-flex">
+                <p style="font-size: 120%;font-style: italic;line-height: 90%;vertical-align: center;font-weight: bolder">
+                     NBI
+                </p>
+                <p style="font-size: 120%;font-style: normal;line-height: 90%;vertical-align: center;font-weight: bolder;margin-left: 30px">
+                     Image
+                 </p>
+                <p style="font-size: 120%;font-style: normal;line-height: 90%;vertical-align: center;font-weight: bolder;margin-left: 30px">
+                     Transformer
+                 </p>
+            </div>
+            <div style="width: 100%; text-align: left; height: 25%; display: inline-flex;cursor: pointer" onclick="jumpToIDMG()">
+                <p style="font-size: 86%;margin-top: 4%;font-style: normal;line-height: 90%;vertical-align: center;">
+                     BUPT
+                </p>
+                <p style="font-size: 86%;margin-top: 4%;font-style: normal;line-height: 90%;vertical-align: center;margin-left: 5px">
+                     -
+                </p>
+                <p style="font-size: 86%;margin-top: 4%;font-style: normal;line-height: 90%;vertical-align: center;margin-left: 5px">
+                     IDMG
+                </p>
+            </div>
+            <div>
+    {#            <h3>font-family 属性</h3>#}
+            </div>
+        </div>
+        <div id="hiddenPart">
+            <p id="tempUserId"></p>
+        </div>
+    </div>
+
+    {#img processing part#}
+    <div id="imgPart">
+        <div id="imgPart_inner">
+            <div id="imgSendPart">
+                <div id="imgSendPart_blue">
+                    <div style="width: 100%; height:86%; display: flex;justify-content: center" id="blueImageShowFeild">
+                        <img src="{%static 'img/uploadicon.png' %}" id="icon_blue" class="uploadIcon">
+                    </div>
+                    <div style="width: 100%; height: 18%; margin-top: 0%">
+                        <div class="button" onclick="uploadBlueImage()">选择蓝色光源图片(416nm)</div>
+                        {#这个提交按钮太丑了，隐藏#}
+                        <input type="file" id="blueImageBotton" style="margin-top: 400px" onchange="blueImageShowChange()">
+                    </div>
+                </div>
+                <div id="imgSendPart_green">
+                    <div style="width: 100%; height:86%; display: flex;justify-content: center">
+                        <img src="{% static 'img/uploadicon.png' %}" id="icon_green" class="uploadIcon">
+                    </div>
+                    <div style="width: 100%; height: 18%; margin-top: 0%">
+                        <div class="button" onclick="uploadGreenImage()" style="background-color: rgba(49,143,63,0.68)">选择绿色光源图片(540nm)</div>
+                        <input type="file" id="greenImageBotton" style="margin-top: 400px" onchange="greenImageShowChange()">
+                    </div>
+                </div>
+            </div>
+            <div id="imgBackPart">
+                <p style="margin-top: 28%" id="outImageDefault">/*上传图片后查看结果*/</p>
+            </div>
+        </div>
+    </div>
+
+    {#控制面板#}
+    <div id="controlPanel">
+        <div style="display: flex; justify-content: center">
+            <div style="background-color: rgba(136,136,136,0.8); display: flex; justify-content: center; width: 92%">
+                <p style="line-height:25px;font-family: STHeiti;color: #363636;display: flex;justify-content: center;font-weight: bold;">控制面板</p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center">
+            <div style="width: 92%">
+                <div id="mainControlPanel">
+                    <button id="uploadAllImage" onclick="checkInputAndUploadImage()">生成图片</button>
+                    <button id="saveImage" onclick="downloadResult()">保存结果</button>
+                    <div style="display: inline-flex;justify-content: center;margin-left: 5%;">
+                        <p style="font-family: STHeiti">通道偏移控制：</p>
+                        <input type="range" id="brightnessAdjustRange" class="checke" min="-30" max="30" onchange="brightnessValueChange()">
+                        <p style="font-family: STHeiti;margin-left: 15px; color: #264b5d; width: 20px;overflow: hidden" id="brightnessValue">0</p>
+                    </div>
+                    <div style="display: inline-flex;justify-content: center;margin-left: 1%">
+                        <p style="font-family: STHeiti;margin-left: 15px;">自动调整亮度</p>
+                        <input type="checkbox" id="isAutoChangeBrightness">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

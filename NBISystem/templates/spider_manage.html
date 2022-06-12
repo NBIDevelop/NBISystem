@@ -1,0 +1,224 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>社交媒体爬虫后台界面</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+{% comment %}
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="#">Sign in</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="offcanvas__top__hover">
+                <span>Usd <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>USD</li>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+            <div class="price">$0.00</div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Free shipping, 30-day return or refund guarantee.</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+{% endcomment %}
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <h2>Scrapy monitor</h2>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="{% url 'scrapy_monitor:index' %}">数据监控</a></li>
+                            <li><a href=" {% url 'scrapy_monitor:day_monitor' %}">当日爬虫监控</a></li>
+                            <li><a href="{% url 'scrapy_monitor:timed_monitor' %}">实时爬虫监控</a></li>
+                            <li><a href={% url 'scrapy_monitor:weibo_index' %}>创建爬虫</a>
+                                <ul class="dropdown">
+                                    <li><a href={% url 'scrapy_monitor:weibo_index' %}>新浪微博爬虫</a></li>
+                                    <li><a href={% url 'scrapy_monitor:xinlang_index' %}>新浪新闻爬虫</a></li>
+                                </ul>
+                            </li>
+                            <li class="active"><a href="{% url 'scrapy_monitor:spider_manage' %}">爬虫任务表</a></li>
+                            <li><a href='/admin/'>数据后台</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+
+
+    <!-- Counter Section Begin -->
+    <section class="counter ">
+        <div class="container">
+            <hr style="height:15px;border:none;border-top:40px groove skyblue;" />
+            <!--新浪微博展示-->
+            <div class="row" style="margin-top: 20px;margin-left: 10px">
+            <div style="margin-bottom: 10px">
+                <h4>新浪Weibo爬虫任务表</h4>
+            </div>
+            <table class="table table-hover coupon__code">
+                  <thead>
+                    <tr>
+                      <th>task_id</th>
+                      <th>关键字</th>
+                      <th>原创</th>
+                      <th>热门</th>
+                      <th>认证用户</th>
+                      <th>新闻媒体</th>
+                      <th>开始时间</th>
+                      <th>结束时间</th>
+                      <th>实时任务</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for li in Weibo%}
+                    <tr>
+                        <td>{{li.task_id}}</td>
+                        <td>{{li.keyword }}</td>
+                        <td>{{li.scope }}</td>
+                        <td>{{ li.xsort }}</td>
+                        <td>{{ li.category }}</td>
+                        <td>{{ li.vip }}</td>
+                        <td>{{li.date_time_begin }}</td>
+                        <td>{{li.date_time_end }}</td>
+                        <td>{{li.real_time_task}}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            <hr style="height:15px;border:none;border-top:40px groove skyblue;" />
+            <!--新浪新闻展示-->
+            <div class="row" style="margin-top: 10px;margin-left: 10px">
+            <div style="margin-bottom: 10px">
+                <h4>新浪News爬虫任务表</h4>
+            </div>
+            <table class="table table-hover coupon__code">
+                  <thead>
+                    <tr>
+                      <th>task_id</th>
+                      <th>关键字</th>
+                      <th>范围</th>
+                      <th>开始时间</th>
+                      <th>结束时间</th>
+                      <th>实时任务</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for li in Xinlang%}
+                    <tr>
+                        <td>{{li.task_id}}</td>
+                        <td>{{li.keyword }}</td>
+                        <td>{{li.range }}</td>
+                        <td>{{li.date_time_begin }}</td>
+                        <td>{{li.date_time_end }}</td>
+                        <td>{{li.real_time_task}}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Counter Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This is Social Media Scrapy Monitor <i class="fa fa-heart-o"
+                            aria-hidden="true"></i>的 <a href="https://colorlib.com" target="_blank">前端</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+/*main page css*/
+
+html,body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fffaee;
+}
+
+#mainPageHeader{
+    margin-top: 15px;
+    width: 100%;
+    height: 90px;
+    /*background-color: #c3f2ff;*/
+    background-image: url("../img/bg.jpg");
+    background-repeat:no-repeat;
+    overflow: hidden;
+    float: right;
+    display: inline-flex;
+    position: fixed;
+    z-index: 100;
+}
+
+#iconContainer{
+    height: 100%;
+    width: 8%;
+    margin-left: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+#nameContainer{
+    height: 100%;
+    width: 25%;
+    margin-left: 3%;
+}
+
+#hiddenPart{
+    height: 100%;
+    width: 0px;
+    overflow: hidden;
+}
+
+#imgPart{
+    width: 100%;
+    height: 80%;
+    padding-top: 140px;
+    overflow: hidden;
+}
+
+#imgPart_inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+#imgSendPart{
+    width: 36%;
+    height: 95%;
+    margin-left: 4%;
+    overflow: hidden;
+}
+
+#imgSendPart_blue{
+    width: 90%;
+    height: 45%;
+    background-color: rgba(154, 198, 255, 0.95);
+    border-radius: 25px;
+    border: 4px dashed rgba(170, 170, 170, 0.9);
+    align-content: center;
+    transition: 0.3s;
+    overflow: hidden;
+}
+#imgSendPart_blue:hover{
+    background-color: rgba(154, 198, 255, 0.5);
+}
+
+#imgSendPart_green{
+    width: 90%;
+    height: 45%;
+    background-color: rgba(154, 255, 171, 0.95);
+    border-radius: 25px;
+    border: 4px dashed rgba(170, 170, 170, 0.9);
+    align-content: center;
+    margin-top: 10px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+#imgSendPart_green:hover{
+    background-color: rgba(154, 255, 171, 0.5);
+}
+
+.button {
+    flex: 1 1 auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -30px;
+    padding: 20px;
+    border: 2px solid #f7f7f7;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    font-family: STHeiti;
+    color: white;
+    background-color: rgba(0, 112, 221, 0.83);
+}
+.button:after {
+    position: absolute;
+    transition: 0.3s;
+    content: "";
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #f7f7f7;
+}
+.button:hover {
+    cursor: pointer;
+}
+.button:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.uploadIcon{
+    height: 60%;
+    margin-top: 5%;
+}
+.uploadImageShow{
+    height: 100%;
+}
+
+#imgBackPart{
+    width: 55%;
+    height: 88%;
+    background-color: rgba(126, 126, 126, 0.25);
+    border: 4px dashed rgba(170, 170, 170, 0.9);
+    border-radius: 40px;
+    font-family: STHeiti;
+    color: #363636;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#imgBackPart:hover{
+    background-color: rgba(126, 126, 126, 0.15);
+}
+
+#controlPanel{
+    margin-top: -20px;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+#mainControlPanel{
+    width: 100%;
+    height: 60px;
+    background-color: rgba(98, 98, 98, 0.16);
+    display: inline-flex;
+}
+
+#uploadAllImage{
+    line-height: 100%;
+    height: 75%;
+    width: 15%;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 3%;
+    border-radius: 5px;
+    background-color: rgba(154, 198, 255, 0.95);
+    color: #000000;
+    transition: 0.3s ease;
+}
+
+#uploadAllImage:hover{
+    background-color: rgba(56, 56, 56, 0.78);
+    color: #edecd6;
+}
+
+#saveImage{
+    line-height: 100%;
+    height: 75%;
+    width: 15%;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 2%;
+    border-radius: 5px;
+    background-color: rgba(204, 255, 204, 0.78);
+    color: #2a2a2a;
+    transition: 0.3s ease;
+}
+
+#saveImage:hover{
+    background-color: rgba(56, 56, 56, 0.78);
+    color: #caffb1;
+}
+
+input[type="range"] {
+    -webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #000042 inset, 0px 2px 10px 0px #002b44 inset, 1px 0px 2px rgba(0, 20, 51, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;
+    margin-top: 2px;
+    background-color: #00005e;
+    border-radius: 15px;
+    width: 500px;
+    -webkit-appearance: none;
+    height:12px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: default;
+    top: -5px;
+    height: 30px;
+    width: 20px;
+    transform: translateY(-4px);
+    background: none repeat scroll 0 0 #777;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 -1px 1px black inset;
+}
+input[type="checkbox"] {
+    height: 18px;
+    width: 18px;
+    margin-top: 18px;
+    margin-left: 10px;
+}
+#brightnessAdjustRange{
+    margin-top: 20px;
+    margin-left: 15px;
+}
